@@ -2,7 +2,9 @@ package com.ff.Stock_Management_App.entity;
 
 import java.util.List;
 
-import org.springframework.lang.NonNull;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ff.Stock_Management_App.dto.CartdtoRequest;
+import com.ff.Stock_Management_App.dto.CartdtoResponse;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
@@ -31,10 +34,14 @@ public class Orders {
 	@Positive(message = "The Price must always be positive")
 	@NotNull
 	private double total_price_with_gst;
+	
+	
 	@ManyToMany
 	@JoinTable(joinColumns = @JoinColumn(name="order_id"),
 	inverseJoinColumns = @JoinColumn(name="product_id"),name = "Order_History_Info")
 	private List<Product> products;
+	
+	
 	
 	
 	public int getId() {
