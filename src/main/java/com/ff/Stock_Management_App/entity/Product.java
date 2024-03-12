@@ -11,6 +11,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import jakarta.validation.constraints.Size;
 @Entity
 @Table(name = "Products_Info")
 public class Product {
@@ -18,11 +23,29 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.IDENTITY,generator = "prod_id")
 	@SequenceGenerator(name = "prod_id",allocationSize = 1,initialValue = 1)
 	private int id;
+	
+	@Size(min = 4, message = "Minimum Four character is needed")
+	@Pattern(regexp = "^[A-Za-z\\s]*$",message = "Invalid Name Format")
+	@NotNull
 	private String name;
+	
+	@Size(min = 4, message = "Minimum Four character is needed")
+	@Pattern(regexp = "^[A-Za-z&\\s]*$",message = "Invalid Name Format")
+	@NotNull
 	private String category;
+	
+	@Size(min = 4, message = "Minimum Four character is needed")
+	@Pattern(regexp = "^[A-Za-z@#$%-&*\\s]*$",message = "Invalid Name Format")
+	@NotNull
 	private String company;
+	
+	@PositiveOrZero(message = "No Negatives Allowed")
 	private int quantity;
+	
+	@NotNull
+	@Positive(message = "The Price must always be positive")
 	private double price;
+	
 	@JsonIgnore
 	@ManyToMany(mappedBy = "products")
 	private List<Orders> orders;
