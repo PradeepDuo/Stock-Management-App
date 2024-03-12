@@ -2,6 +2,8 @@ package com.ff.Stock_Management_App.entity;
 
 import java.util.List;
 
+import org.springframework.lang.NonNull;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,6 +13,8 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 
 @Entity
 @Table(name = "Order_Info")
@@ -19,12 +23,20 @@ public class Orders {
 	@GeneratedValue(strategy = GenerationType.IDENTITY,generator = "order_Id")
 	@SequenceGenerator(name = "order_Id",allocationSize = 1,initialValue = 101)
 	private int id;
+	
+	@Positive(message = "The Price must always be positive")
+	@NotNull
 	private double total_price;
+	
+	@Positive(message = "The Price must always be positive")
+	@NotNull
 	private double total_price_with_gst;
 	@ManyToMany
 	@JoinTable(joinColumns = @JoinColumn(name="order_id"),
 	inverseJoinColumns = @JoinColumn(name="product_id"),name = "Order_History_Info")
 	private List<Product> products;
+	
+	
 	public int getId() {
 		return id;
 	}
