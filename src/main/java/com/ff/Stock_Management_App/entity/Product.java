@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +28,7 @@ public class Product {
 	@Size(min = 4, message = "Minimum Four character is needed")
 	@Pattern(regexp = "^[A-Za-z\\s]*$",message = "Invalid Name Format")
 	@NotNull
+	@Column(unique = true )
 	private String name;
 	
 	@Size(min = 4, message = "Minimum Four character is needed")
