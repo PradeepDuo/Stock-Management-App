@@ -26,18 +26,18 @@ public class Product {
 	private int id;
 	
 	@Size(min = 4, message = "Minimum Four character is needed")
-	@Pattern(regexp = "^[A-Za-z\\s]*$",message = "Invalid Name Format")
+	@Pattern(regexp = "^[A-Za-z0-9\\s]*$",message = "Invalid Name Format")
 	@NotNull
 	@Column(unique = true )
 	private String name;
 	
 	@Size(min = 4, message = "Minimum Four character is needed")
-	@Pattern(regexp = "^[A-Za-z&\\s]*$",message = "Invalid Name Format")
+	@Pattern(regexp = "^[A-Za-z0-9&\\s]*$",message = "Invalid Name Format")
 	@NotNull
 	private String category;
 	
 	@Size(min = 4, message = "Minimum Four character is needed")
-	@Pattern(regexp = "^[A-Za-z@#$%-&*\\s]*$",message = "Invalid Name Format")
+	@Pattern(regexp = "^[A-Za-z0-9@#$%-&*\\s]*$",message = "Invalid Name Format")
 	@NotNull
 	private String company;
 	
@@ -52,6 +52,12 @@ public class Product {
 	@ManyToMany(mappedBy = "products")
 	private List<Orders> orders;
 	
+	public List<Orders> getOrders() {
+		return orders;
+	}
+	public void setOrders(List<Orders> orders) {
+		this.orders = orders;
+	}
 	public int getId() {
 		return id;
 	}

@@ -13,16 +13,12 @@ public class CartdtoResponse {
 		this.message = message;
 	}
 	
-	
 	public CartdtoResponse(String productName, int quantity) {
 		super();
 		this.productName = productName;
 		this.quantity = quantity;
 	}
 	
-	
-
-
 	public String getProductName() {
 		return productName;
 	}
