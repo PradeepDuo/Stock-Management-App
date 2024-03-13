@@ -27,7 +27,7 @@ public class AppConfig {
 
 		License mitLicense = new License().name("MIT License").url("https://choosealicense.com/licenses/mit/");
 
-		Info info = new Info().title("SMS App RESTful Web Service documentation").version("1.0").contact(contact)
+		Info info = new Info().title("Stock Management System App RESTful Web Service documentation").version("1.0").contact(contact)
 				.description("This API exposes endpoints to manage Application.")
 				.termsOfService("https://sms.in/terms").license(mitLicense);
 
