@@ -25,23 +25,23 @@ public class Product {
 	@SequenceGenerator(name = "prod_id",allocationSize = 1,initialValue = 1)
 	private int id;
 	
-	@Size(min = 4, message = "Minimum Four character is needed")
+	@Size(min = 4, message = "Minimum Four character is needed for name")
 	@Pattern(regexp = "^[A-Za-z0-9\\s]*$",message = "Invalid Name Format")
 	@NotNull
 	@Column(unique = true )
 	private String name;
 	
-	@Size(min = 4, message = "Minimum Four character is needed")
+	@Size(min = 2, message = "Minimum Two character is needed for category")
 	@Pattern(regexp = "^[A-Za-z0-9&\\s]*$",message = "Invalid Name Format")
 	@NotNull
 	private String category;
 	
-	@Size(min = 4, message = "Minimum Four character is needed")
+	@Size(min = 4, message = "Minimum Four character is needed for company")
 	@Pattern(regexp = "^[A-Za-z0-9@#$%-&*\\s]*$",message = "Invalid Name Format")
 	@NotNull
 	private String company;
 	
-	@PositiveOrZero(message = "No Negatives Allowed")
+	@PositiveOrZero(message = "No Negatives Allowed for quantity")
 	private int quantity;
 	
 	@NotNull

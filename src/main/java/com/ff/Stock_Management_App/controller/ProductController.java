@@ -26,6 +26,7 @@ import jakarta.validation.Valid;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
+	
 	@Autowired
 	private ProductService productService;
 	
@@ -65,6 +66,7 @@ public class ProductController {
 		return productService.findByCompany(name);
 	}
 	
+	//this method is used to fetch the availability of stocks 
 	@GetMapping()
 	@Operation(description = "Fetch available stock and quantity",summary = "Fetch Stock availablity")
 	@ApiResponse(description = "Stock availablity",responseCode = "200")

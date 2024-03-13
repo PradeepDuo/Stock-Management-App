@@ -93,11 +93,14 @@ public class ProductService {
 		listResponseStructure.setStatusCode(HttpStatus.OK.value());
 		return new ResponseEntity<ResponseStructure<List<Product>>> (listResponseStructure,HttpStatus.OK);
 	}
+	
+	//Here, Productdto class is used from dto package to display only name and quantity
 	public ResponseEntity<ResponseStructure<List<Productdto>>> stockCheck(){
 		List<Product> stockCheck = productDao.stockCheck();
 		List<Productdto> dtoProductList=new ArrayList<Productdto>();
 		System.out.println(dtoProductList);
 		
+		//iterating the Product List to add to Productdto list
 		for(Product product : stockCheck) {
 			Productdto dto= new Productdto();
 			dto.setName(product.getName());
